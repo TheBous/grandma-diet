@@ -1,6 +1,6 @@
 const routes = [
     { name: 'login', path: '/login', needAuth: false },
-    { name: 'home', path: '/', needAuth: false },
+    // { name: 'home', path: '/', needAuth: false },
     { name: 'dashboard', path: '/dashboard', needAuth: true },
 ];
 

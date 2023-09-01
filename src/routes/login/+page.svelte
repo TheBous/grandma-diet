@@ -5,7 +5,6 @@
 	import { onMount } from "svelte";
 
 	onMount(() => {
-		alert('here');
 		if (!!$user?.uid) goto("/dashboard");
 	});
 
@@ -20,6 +19,7 @@
 			},
 			body: JSON.stringify({ idToken }),
 		});
+		goto("/dashboard");
 	};
 
 	const signOutSSR = async () => {

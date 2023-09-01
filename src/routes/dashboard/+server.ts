@@ -6,6 +6,7 @@ import { json } from '@sveltejs/kit';
 const OpenAIConfiguration = {
     apiKey: OPENAI_API_KEY,
 };
+
 const openai = new OpenAI(OpenAIConfiguration);
 
 export const POST: RequestHandler = async ({ request }) => {
@@ -17,6 +18,5 @@ export const POST: RequestHandler = async ({ request }) => {
     });
 
     const chatGPTMessages = completion.choices[0];
-    console.warn(chatGPTMessages);
     return json(chatGPTMessages);
 };

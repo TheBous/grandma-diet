@@ -6,6 +6,7 @@
 	import { user } from "$lib/firebase";
 	import "../app.css";
 	import { getRoutes } from "./routes";
+	import img from "$lib/images/grandmadiet-horizontal-white.png";
 
 	$: isUserLogged = !!$user?.uid;
 </script>
@@ -41,7 +42,9 @@
 				</li>
 			</ul>
 		</div>
-		<a class="btn btn-ghost normal-case text-xl" href="/">daisy</a>
+		<a class="btn btn-ghost normal-case text-xl" href="/">
+			<img src={img} alt="logo" width="150" /></a
+		>
 	</div>
 	<div class="navbar-center hidden lg:flex">
 		<ul class="menu menu-horizontal px-1">
