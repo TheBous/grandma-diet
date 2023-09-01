@@ -9,8 +9,10 @@
 	let userMessage = "";
 	let loading = false;
 	let aiMessage = "";
-
-	console.warn($t("common.highProtein"));
+	let highProtein = false;
+	let highCarbs = false;
+	let highGrass = false;
+	let diet = false;
 
 	const onMessage = async () => {
 		try {
@@ -21,7 +23,13 @@
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ messages: [userMessage] }),
+				body: JSON.stringify({
+					messages: [userMessage],
+					highProtein,
+					highCarbs,
+					highGrass,
+					diet,
+				}),
 			});
 			const json = await response.json();
 			aiMessage = json?.message?.content ?? "";
@@ -30,6 +38,19 @@
 		} finally {
 			loading = false;
 		}
+	};
+
+	const onProteinChange = () => {
+		highProtein = !highProtein;
+	};
+	const onCarbsChange = () => {
+		highCarbs = !highCarbs;
+	};
+	const onGrassChange = () => {
+		highGrass = !highGrass;
+	};
+	const onDietChange = () => {
+		diet = !diet;
 	};
 </script>
 
@@ -40,25 +61,32 @@
 		placeholder="Type here"
 		class="input input-bordered w-full max-w-xs my-4"
 	/>
-	<div class="form-control flex flex-row">
+	<div class="form-control flex flex-row gap-5">
 		<Checkbox
-			label={$t("common.highProtein")}
-			checked
-			onChange={console.warn}
+			label={`💪 ${$t("common.highProtein")}`}
+			checked={highProtein}
+			onChange={onProteinChange}
 		/>
 		<Checkbox
-			label={$t("common.highProtein")}
-			checked
-			onChange={console.warn}
+			label={`🍝 ${$t("common.highCarbs")}`}
+			checked={highCarbs}
+			onChange={onCarbsChange}
 		/>
 		<Checkbox
-			label={$t("common.highProtein")}
-			checked
-			onChange={console.warn}
+			label={`🥜 ${$t("common.highGrass")}`}
+			checked={highGrass}
+			onChange={onGrassChange}
+		/>
+		<Checkbox
+			label={`🥦 ${$t("common.diet")}`}
+			checked={diet}
+			onChange={onDietChange}
 		/>
 	</div>
 
-	<button class="btn btn-primary" on:click={onMessage}>Ask something</button>
+	<button disabled={!userMessage} class="btn btn-primary" on:click={onMessage}
+		>Ask something</button
+	>
 	{#if loading}
 		<span class="loading loading-dots loading-lg my-4" />
 	{/if}

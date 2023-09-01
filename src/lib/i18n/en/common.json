@@ -1,3 +1,6 @@
 {
-	"highProtein": "High-protein diet"
+	"highProtein": "High-protein",
+	"highCarbs": "High-carbo",
+	"highGrass": "High-Grass",
+	"diet": "Dietetic"
 }

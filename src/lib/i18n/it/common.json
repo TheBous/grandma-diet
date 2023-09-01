@@ -1,3 +1,6 @@
 {
-	"highProtein": "Ricca di protein"
+	"highProtein": "Ricca di proteine",
+	"highCarbs": "Ricca di carboidrati",
+	"highGrass": "Ricca di grassi",
+	"diet": "Dietetico"
 }

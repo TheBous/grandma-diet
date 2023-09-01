@@ -6,7 +6,7 @@
 </script>
 
 <label class="label cursor-pointer">
-	<span class="label-text">{label}</span>
+	<span class="label-text mr-2 font-bold">{label}</span>
 	<input
 		on:change={onChange}
 		type="checkbox"

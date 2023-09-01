@@ -10,7 +10,20 @@ const OpenAIConfiguration = {
 const openai = new OpenAI(OpenAIConfiguration);
 
 export const POST: RequestHandler = async ({ request }) => {
-    const { messages } = await request.json();
+    const {
+        messages,
+        highProtein,
+        highCarbs,
+        highGrass,
+        diet }
+        = await request.json();
+
+    if (highProtein) messages[0] += '. I want to eat high protein food.';
+    if (highCarbs) messages[0] += '. I want to eat high carbs food.';
+    if (highGrass) messages[0] += '. I want to eat high grass food.';
+    if (diet) messages[0] += '. I want to eat diet food.';
+
+    console.warn(messages[0]);
 
     const completion = await openai.chat.completions.create({
         messages: (messages as string[]).map((message) => ({ role: 'user', content: message })),
